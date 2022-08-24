@@ -1,3 +1,6 @@
+/**
+ * Docs: https://node-postgres.com/
+ */
 import pkg from 'pg';
 const { Client } = pkg;
 
