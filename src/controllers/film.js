@@ -22,15 +22,5 @@ const getFilmById = (req, res, next) => {
     });
 };
 
-const getFilmByRating = (req, res, next) => {
-    const rating = req.params.title;
-    db.query(`SELECT * FROM film WHERE title = ${rating}`, function (err, result) {
-        if (err) {
-            console.error(err);
-            res.status(400).send(JSON.stringify(err));
-        }
-        res.status(200).send(format(JSON.stringify(result.rows), { semi: false, parser: "json" }));
-    });
-}
 
-export default { getAllFilm, getFilmById, getFilmByRating };
+export default { getAllFilm, getFilmById };

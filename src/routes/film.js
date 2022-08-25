@@ -10,9 +10,6 @@ router.get('/', filmController.getAllFilm);
 //get film by film_id
 router.get('/:id', filmController.getFilmById);
 
-//get film by rating
-router.get('/title/:title', filmController.getFilmByRating);
-
 
 const filmRoute = {
     rootUrl: rootUrl,
