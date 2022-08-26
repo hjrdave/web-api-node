@@ -22,5 +22,23 @@ const getFilmById = (req, res, next) => {
     });
 };
 
+const getFilmByPage = (req, res, next) => {
+    const sql = `
+        SELECT * FROM film 
+        ORDER BY film_id ASC
+        LIMIT $1 
+        OFFSET $2;
+    `;
+    const page = req.params.page;
+    const offset = ((page * 25) + 1);
+    const params = [25, offset];
+    db.query(sql, params, function (err, result) {
+        if (err) {
+            res.status(400).send(JSON.stringify(err));
+        }
+        res.status(200).send(format(JSON.stringify(result.rows), { semi: false, parser: "json" }));
+    });
+};
 
-export default { getAllFilm, getFilmById };
+
+export default { getAllFilm, getFilmById, getFilmByPage };

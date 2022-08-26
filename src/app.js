@@ -24,6 +24,8 @@ app.listen(port, function () {
     console.log(`http://localhost:${port}${filmRoute.rootUrl}`.yellow);
     console.log(`http://localhost:${port}${actorRoute.rootUrl}`.yellow);
     console.log(' ');
+    console.log('Available Views:');
+    console.log(`http://localhost:${port}${homeRoute.rootUrl}`.yellow);
 });
 
 
