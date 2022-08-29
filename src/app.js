@@ -1,12 +1,25 @@
 import db from './connect.js';
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 import colors from 'colors';
 import filmRoute from './routes/film.js';
 import actorRoute from './routes/actor.js';
 import homeRoute from './routes/home.js';
 db.connect();
 const app = express();
+
+const allowedOrigins = ['http://localhost:3000'];
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
 app.set('views', path.join('./views', '../src/views'));
 app.set('view engine', 'ejs');
 app.set('json spaces', 1);

@@ -33,6 +33,7 @@ const getFilmByPage = (req, res, next) => {
     const offset = ((page * 25) + 1);
     const params = [25, offset];
     db.query(sql, params, function (err, result) {
+
         if (err) {
             res.status(400).send(JSON.stringify(err));
         }
