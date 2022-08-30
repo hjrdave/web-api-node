@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
-import { FilmController } from './film/controllers/film/film.controller';
+import { FilmController } from './film/film.controller';
 import { FilmModule } from './film/film.module';
-import entities from './typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -17,8 +16,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: entities,
         synchronize: true,
+        autoLoadEntities: true
       }),
       inject: [ConfigService],
     }),
