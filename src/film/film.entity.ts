@@ -24,7 +24,7 @@ export class Film {
 
     @Column({
         name: 'release_year',
-        type: 'year',
+        type: 'text',
         nullable: true,
         default: '',
     })
@@ -83,7 +83,7 @@ export class Film {
 
     @Column({
         name: 'special_features',
-        type: 'array',
+        type: 'text',
         nullable: true,
         default: '',
     })
