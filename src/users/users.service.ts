@@ -20,6 +20,6 @@ export class UsersService {
     }
 
     findUsersById(id: number) {
-        return this.userRepository.findOne(id as any);
+        return this.userRepository.findOne({ where: { id: id } });
     }
 }
