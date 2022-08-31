@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { FilmController } from './film/film.controller';
-import { FilmModule } from './film/film.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -16,14 +15,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        synchronize: false,
+        synchronize: true,
         autoLoadEntities: true
       }),
       inject: [ConfigService],
     }),
-    FilmModule
+    UsersModule
   ],
-  controllers: [FilmController],
+  controllers: [],
   providers: [],
 })
 export class AppModule { }

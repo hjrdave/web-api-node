@@ -10,7 +10,7 @@ export class FilmService {
         private filmRepository: Repository<Film>,
     ) { };
 
-    findAll(): Promise<Film[]> {
+    getAll(): Promise<Film[]> {
         return this.filmRepository.find();
     }
 }

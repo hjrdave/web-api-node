@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { FilmService } from './film.service';
 
 @Controller('film')
-export class FilmController {}
+export class FilmController {
+    constructor(private readonly filmService: FilmService) { }
+
+    @Get()
+    getFilms() {
+        return this.filmService.getAll();
+    }
+}
