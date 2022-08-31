@@ -30,7 +30,8 @@ const getFilmByPage = (req, res, next) => {
         OFFSET $2;
     `;
     const page = req.params.page;
-    const offset = ((page * 25) + 1);
+    const offset = (page * 25);
+    //const offset = ((page * 25) + 1);
     const params = [25, offset];
     db.query(sql, params, function (err, result) {
 
