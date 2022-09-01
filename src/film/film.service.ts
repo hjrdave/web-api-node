@@ -7,10 +7,14 @@ import { Film } from './film.entity';
 export class FilmService {
     constructor(
         @InjectRepository(Film)
-        private filmRepository: Repository<Film>,
+        private readonly filmRepository: Repository<Film>,
     ) { };
 
-    getAll(): Promise<Film[]> {
+    findFilms(): Promise<Film[]> {
         return this.filmRepository.find();
+    }
+
+    findFilmById(id: number) {
+        return this.filmRepository.findOne({ where: { id: id } });
     }
 }

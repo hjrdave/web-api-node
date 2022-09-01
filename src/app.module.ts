@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
+import { FilmModule } from './film/film.module';
 
 @Module({
   imports: [
@@ -15,12 +16,13 @@ import { UsersModule } from './users/users.module';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        synchronize: true,
+        //synchronize: true,
         autoLoadEntities: true
       }),
       inject: [ConfigService],
     }),
-    UsersModule
+    UsersModule,
+    FilmModule
   ],
   controllers: [],
   providers: [],

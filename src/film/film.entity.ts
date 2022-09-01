@@ -10,7 +10,7 @@ export class Film {
 
     @Column({
         name: 'title',
-        type: 'character varying',
+        type: 'varchar',
         nullable: false
     })
     title: string;
